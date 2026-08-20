@@ -1,0 +1,32 @@
+##### Assignment 1 - Script Programming Spring 2027
+
+### Question 1: User Welcome Message
+# $username = Read-Host -Prompt "Please enter your Username "
+# $college = Read-Host -Prompt "Please enter your college "
+# Write-Host "Hello $username! Welcome to $college college."
+
+
+### Question 2: List Browser Processes
+# Get-Process -Name Opera
+
+
+### Question 3: File System and Directory Management
+Get-ChildItem C:\ -Force | Sort-Object Name | Select-Object Name, Mode, LastWriteTime
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
