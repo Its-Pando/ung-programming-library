@@ -120,12 +120,131 @@
 
 
 ##### Example 4: Rename the property name at Output
-Get-Process | Select-Object @{
-    Name = "Working Set: Length Size MB" 
-    Expression = {
-        [Math]::Round($_.WS/1MB, 2)
+# Get-Process | Select-Object @{
+#     Name = "Working Set: Length Size MB" 
+#     Expression = {
+#         [Math]::Round($_.WS/1MB, 2)
+#     }
+# }, CPU, ID, ProcessName -First 5
+
+
+##### METHODS FOR RANDOM NUMBER GENERATION
+##### For Loop
+##### #1: Print 10 random number, number range [100, 999]
+# for ($i = 1; $i -le 10; $i++) {
+#     Get-Random -Minimum 100 -Maximum 999 | Write-Output
+# }
+##### 2. Create Number Array by @
+# $nums = @(1..10)
+# foreach ($count in $nums) {
+#     Get-Random -Minimum 100 -Maximum 999 | Write-Output
+# }
+##### 3. One line pipeline cmdlet
+##### Find even or odd number
+# 1..10 | Foreach-Object{if($_%2 -eq 0) {Write-Host "$_ is even number"} else {Write-Host "$_ is odd number"}}
+##### 4. Print digits
+##### Try to print Student ID starting with 900
+##### We will get 1 digit [0, 9], 2 digits [10, 99], and 3 digits [100, 999]
+##### and append such values to "900" to form a 4-digit number
+# for ($i = 1; $i -le 999; $i++) {
+#     Write-Host "900$i"
+# }
+##### and append such values to "900" to form a 4-digit number
+# for ($num = 0; $num -le 999; $num++) {
+#     Write-Host "900$($num.ToString("000"))"
+# }
+
+
+##### Get-Uptime - Gets the exact boot time of the computer
+##### Method 1
+# Get-Uptime -since
+##### Method 2: Get-Date returns the current date and time
+# (Get-Date) - (Get-Uptime)
+#((Get-Date) - (Get-Uptime)).ToString("yyyy-MM-dd HH:mm")
+
+##### Get-CimInstance returns detailed info about the Operating System on the current computer
+# Get-CimInstance Win32_OperatingSystem | Get-Member
+# Get-CimInstance Win32_OperatingSystem | Select-Object *
+
+
+##### Advanced Functions
+##### Simple Function Example
+# Function findSum($num1, $num2) {
+#     $sum = [int]$num1 + [int]$num2
+#     Write-Host "Sum is $sum"
+# }
+# $n1 = Read-Host "Enter first number"
+# $n2 = Read-Host "Enter second number"
+# findSum $n1 $n2
+##### Advanced Function Structure
+function findSum2 {
+    [CmdletBinding()]
+    param (
+        [parameter(Mandatory=$True; ValueFromPipeline=$True)]
+    )
+    process {
+
     }
-}, CPU, ID, ProcessName -First 5
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
