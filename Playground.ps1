@@ -177,15 +177,15 @@
 # $n2 = Read-Host "Enter second number"
 # findSum $n1 $n2
 ##### Advanced Function Structure
-function findSum2 {
-    [CmdletBinding()]
-    param (
-        [parameter(Mandatory=$True; ValueFromPipeline=$True)]
-    )
-    process {
+# function findSum2 {
+#     [CmdletBinding()]
+#     param (
+#         [parameter(Mandatory=$True; ValueFromPipeline=$True)]
+#     )
+#     process {
 
-    }
-}
+#     }
+# }
 
 
 
