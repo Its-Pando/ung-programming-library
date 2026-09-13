@@ -14,14 +14,14 @@
 #         Write-Host $_.first_name $_.last_name $_.city $_.county $_.state $_.phone1 $_.phone2 $_.email
 #     }
 # }
-### Users with phone numbers starting with 678 or 770
+# ## Users with phone numbers starting with 678 or 770
 # Write-Host "`n`nUsers with phone numbers starting with 678 or 770:"
 # $data | ForEach-Object {
 #     if ($_.phone1 -match "^(678|770)" -or $_.phone2 -match "^(678|770)") {
 #         Write-Host $_.first_name $_.last_name $_.city $_.county $_.state $_.phone1 $_.phone2 $_.email
 #     }
 # }
-### Users with email addresses ending with .org
+# ## Users with email addresses ending with .org
 # Write-Host "`n`nUsers with email addresses ending with .org:"
 # $data | ForEach-Object {
 #     if ($_.email -match "\.org$") {
@@ -31,29 +31,49 @@
 
 
 ##### Question 3: Credential/Password Protection
-function Encrypt_Password {
-    for ($i = 1; $i -le 2; $i++) {
-        $password = Read-Host -Prompt "Enter a password to encrypt" -AsSecureString
-        ConvertFrom-SecureString -SecureString $password -key (1..16) | Out-File -FilePath "C:\Users\cbray\Downloads\encryptPW.txt" -Append
-    }
-}
+# $key = 1..16
+# function Encrypt_Password {
+#     for ($i = 1; $i -le 10; $i++) {
+#         $password = Read-Host -Prompt "Enter a password to encrypt" -AsSecureString
+#         ConvertFrom-SecureString -SecureString $password -Key $key | Out-File -FilePath "C:\Users\cbray\Downloads\encryptPW.txt" -Append
+#     }
+# }
 
-##### Decrypts Password using ConvertFrom-SecureString and the same key used for encryption
-function Decrypt_Password {
-    $data = Get-Content -Path "C:\Users\cbray\Downloads\encryptPW.txt" | ConvertTo-SecureString -key (1..16)
-    $data | ConvertFrom-SecureString -AsPlainText
-}
+# function Decrypt_Password {
+#     $data = Get-Content -Path "C:\Users\cbray\Downloads\encryptPW.txt"
+#     foreach ($line in $data) {    
+#         $encrypted = ConvertTo-SecureString -String $line -Key $key
+#         $encrypted | ConvertFrom-SecureString -AsPlainText
+#     }
+# }
 
-Encrypt_Password
-Decrypt_Password
-
-
-
-
-
+# Encrypt_Password
+# Decrypt_Password
 
 
+##### Question 4: Base64 Encoding and Decoding in PowerShell
+# function EncodeToBase64 {
+#     $content = Get-Content -Path "C:\Users\cbray\Downloads\wordlist.txt"
+#     foreach ($line in $content) {
+#         $bytes = [System.Text.Encoding]::Unicode.GetBytes($line)
+#         [System.Convert]::ToBase64String($bytes) | Out-File -FilePath "C:\Users\cbray\Downloads\encoded.txt" -Append
+#     }
+# }
 
+# function DecodeFromBase64 {
+#     $encodedContent = Get-Content -Path "C:\Users\cbray\Downloads\encoded.txt"
+#     foreach ($line in $encodedContent) {
+#         $bytes = [System.Convert]::FromBase64String($line)
+#         $decoded = [System.Text.Encoding]::Unicode.GetString($bytes)
+#         Write-Output $decoded
+#     }
+# }
+
+# EncodeToBase64
+# DecodeFromBase64
+
+
+##### Question 5: File Integrity & Security
 
 
 
