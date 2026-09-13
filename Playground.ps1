@@ -188,14 +188,10 @@
 # }
 
 
-
-
-
-
-
-
-
-
+"logic" -match "o" | Write-Host
+"logic" -match "l[o-z]gic" | Write-Host
+58 -match '[0-9][0-9]' | Write-Host
+'111-222-3333' -match '\d{3}-\d{3}-\d{4}' | Write-Host
 
 
 
